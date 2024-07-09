@@ -7,3 +7,7 @@ Cross-Origin Resource Sharing (CORS) policy. When making requests to a different
 
 const cors = require('cors');
 app.use(cors());
+
+2> Use of findOne()-> find() gives array of documents which satisfies specific codition , but findOne gives only one document of it
+
+3> In forms to make auto-suggestions off do autocomplete="off"

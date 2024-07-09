@@ -36,7 +36,7 @@ userouter.post("/register", async function(req,res){
 
 userouter.post("/login", async function(req,res){
     try{
-        const existuser = await UserModel.find({email: req.body.email});
+        const existuser = await UserModel.findOne({email: req.body.email});
 
         if(!existuser){
             return res.status(400).json({success :"false" ,message: "user does not exist with this email"})
@@ -50,7 +50,7 @@ userouter.post("/login", async function(req,res){
         return res.status(200).json({success:"true",message:"logined successfully"});
     }
     catch(err){
-        return res.json({success : "false",message :err})
+        return res.status(500).json({success : "false",message :err})
     }
 })
 

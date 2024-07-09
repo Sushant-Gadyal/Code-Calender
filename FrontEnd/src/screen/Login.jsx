@@ -17,15 +17,22 @@ function Login() {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         console.log(loginData);
-        const response = await fetch("http://localhost:3005/api/user/login",{
-            method:"POST",
-            header : {
-                "Content-Type": "application/json"
-            },
-            body : JSON.stringify(loginData)
-        });
-        const data = await response.json();
-        console.log(data);
+
+        try{
+            const response = await fetch("http://localhost:3005/api/user/login",{
+                method:"POST",
+                headers : {
+                    "Content-Type": "application/json"
+                },
+                body : JSON.stringify(loginData)
+            });
+            const data = await response.json();
+            console.log(data);
+        }
+        catch(err){
+            console.log("Error : ", err );
+        }
+        
     }
 
 
@@ -48,7 +55,7 @@ function Login() {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Login into Account
             </h1>
-            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit} autocomplete="off">
                
               <div>
                 <label
