@@ -1,1 +1,9 @@
 # Code-Calender
+
+Diffculties Came Across While Building and Learnings
+
+1> No use of CORS -> I was not able to fetch data from backend because of not using CORS
+Cross-Origin Resource Sharing (CORS) policy. When making requests to a different origin (domain, protocol, or port) than your frontend application, the server needs to explicitly allow these requests.
+
+const cors = require('cors');
+app.use(cors());

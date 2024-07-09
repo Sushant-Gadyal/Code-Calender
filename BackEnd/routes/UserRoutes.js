@@ -26,31 +26,31 @@ userouter.post("/register", async function(req,res){
             cf_handle : req.body.cf_handle,
         })
 
-        res.status(200).json({message : "register done", email : req.body.email});
+        return res.status(200).json({message : "register done", email : req.body.email});
     }
     catch{
-        res.status(400).json({error : error.message});
+       return  res.status(400).json({error : error.message});
     }
 })
 
 
 userouter.post("/login", async function(req,res){
     try{
-        const existuser = await UserModel.findOne({email: req.body.email});
+        const existuser = await UserModel.find({email: req.body.email});
 
         if(!existuser){
-            res.status(400).json({success :"false" ,message: "user does not exist with this email"})
+            return res.status(400).json({success :"false" ,message: "user does not exist with this email"})
         }
         const isMatch = await bcrypt.compare(req.body.password,existuser.password);
 
         if(!isMatch){
-            res.status(400).json({success:"false",message : "Wrong Password"});
+            return res.status(400).json({success:"false",message : "Wrong Password"});
         }
 
-        res.status(200).json({success:"true",message:"logined successfully"});
+        return res.status(200).json({success:"true",message:"logined successfully"});
     }
     catch(err){
-        res.json({success : "false",message : "error"})
+        return res.json({success : "false",message :err})
     }
 })
 

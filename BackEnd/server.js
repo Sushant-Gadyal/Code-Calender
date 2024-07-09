@@ -2,11 +2,13 @@ const express = require("express");
 const connectDb  = require("./config/db");
 const userouter = require("./routes/UserRoutes");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 const app = express();
 
 const port = 3005;
 
 // middlwares
+app.use(cors());
 app.use(express.json())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

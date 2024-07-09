@@ -1,7 +1,5 @@
 import React from 'react'
-import {Route, Routes} from 'react-router-dom'
-import { BrowserRouter } from 'react-router-dom';
-import Navbar from './components/Navabr';
+import {Route, Routes, BrowserRouter} from 'react-router-dom'
 import Home from './screen/Home';
 import Login from "./screen/Login"
 import Register from "./screen/Register"
