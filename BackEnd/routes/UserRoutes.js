@@ -47,7 +47,7 @@ userouter.post("/login", async function(req,res){
             return res.status(400).json({success:"false",message : "Wrong Password"});
         }
 
-        return res.status(200).json({success:"true",message:"logined successfully"});
+        return res.status(200).json({success:"true",message:"logined successfully", email : req.body.email});
     }
     catch(err){
         return res.status(500).json({success : "false",message :err})

@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 
@@ -7,6 +8,8 @@ function Login() {
         email : "",
         password : ""
     })
+
+    const navigate = useNavigate()
 
     const handleChange = (e)=>{
         e.preventDefault();
@@ -27,7 +30,9 @@ function Login() {
                 body : JSON.stringify(loginData)
             });
             const data = await response.json();
+            localStorage.setItem("useremail",data.email);
             console.log(data);
+            navigate("/dashboard");
         }
         catch(err){
             console.log("Error : ", err );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
 
@@ -10,6 +11,8 @@ function Register() {
         lc_handle:"",
         cf_handle:""
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (e)=>{
         e.preventDefault();
@@ -27,8 +30,10 @@ function Register() {
             body : JSON.stringify(userData)
         })
         const data = await response.json();
-        console.log(userData);
-        console.log(data);
+        // console.log(userData);
+        // console.log(data);
+        localStorage.setItem("useremail",data.email);
+        navigate("/dashboard");
     }
 
 
