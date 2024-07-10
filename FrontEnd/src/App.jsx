@@ -4,6 +4,7 @@ import Home from './screen/Home';
 import Login from "./screen/Login"
 import Register from "./screen/Register"
 import Dashboard from './screen/Dashboard';
+import Logout from './screen/Logout';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/login" element={<Login/>}/>
           <Route exact path="/register" element={<Register/>}/>
           <Route exact path="/dashboard" element={<Dashboard/>}/>
+          <Route exact path="/logout" element={<Logout/>}/>
           
         </Routes>
       </div>

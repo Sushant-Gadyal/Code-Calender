@@ -11,3 +11,6 @@ app.use(cors());
 2> Use of findOne()-> find() gives array of documents which satisfies specific codition , but findOne gives only one document of it
 
 3> In forms to make auto-suggestions off do autocomplete="off"
+
+4> When using ternary operator in Navbar there were two components to be shown , so we can't use return inside jsx 
+    we have to make that component with ( and write our code in it).
