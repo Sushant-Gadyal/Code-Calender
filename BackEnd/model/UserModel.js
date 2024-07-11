@@ -29,7 +29,7 @@ const UserSchema = mongoose.Schema({
       default : "",
     },
     count: {
-      type: String,
+      type: Number,
       default : "",
 
     },
@@ -37,12 +37,12 @@ const UserSchema = mongoose.Schema({
   last_cf_updated: {
     date: {
       type: String,
-      default : "",
+      default : 0,
 
     },
     count: {
-      type: String,
-      default : "",
+      type: Number,
+      default : 0,
 
     },
   },

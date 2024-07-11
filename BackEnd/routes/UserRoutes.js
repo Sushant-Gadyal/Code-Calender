@@ -63,11 +63,26 @@ userouter.post("/getuser",async function(req,res){
             return res.status(400).json({success :"false" ,message: "user does not exist with this email"});
         }
         
-        let resp = await fetch(`https://alfa-leetcode-api.onrender.com/${existuser.lc_handle}/calendar`);
-        resp = await resp.json();
-        console.log(resp);
+        let cf_resp = await fetch(`https://codeforces.com/api/user.status?handle=${existuser.cf_handle}&from=1&count=10000`);
+        cf_resp = await cf_resp.json();
+        // console.log(resp);
 
-        return res.status(200).json({submission:resp});
+        if(last_cf_updated.date===""){
+            cf_resp.result.forEach((data)=>{
+                const actual_date = new Date(data.creationTimeSeconds*1000)
+                                    .toISOString()
+                                    .replace("-", "/")
+                                    .replace("-", "/")
+                                    .split("T")[0];
+                
+                
+            })
+        }   
+
+
+
+
+        return res.status(200).json({success:"true"});
     }
     catch(err){
 
