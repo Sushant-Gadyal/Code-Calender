@@ -30,10 +30,11 @@ function Register() {
             body : JSON.stringify(userData)
         })
         const data = await response.json();
-        // console.log(userData);
-        // console.log(data);
-        localStorage.setItem("useremail",data.email);
-        navigate("/dashboard");
+        if(data.success==="true"){
+          localStorage.setItem("useremail",data.email);
+          navigate("/dashboard");
+        }
+
     }
 
 

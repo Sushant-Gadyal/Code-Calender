@@ -30,9 +30,12 @@ function Login() {
                 body : JSON.stringify(loginData)
             });
             const data = await response.json();
-            localStorage.setItem("useremail",data.email);
-            console.log(data);
-            navigate("/dashboard");
+            if(data.success==="true"){
+              localStorage.setItem("useremail",data.email);
+              console.log(data);
+              navigate("/dashboard");
+            }
+            
         }
         catch(err){
             console.log("Error : ", err );

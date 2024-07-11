@@ -22,6 +22,12 @@ const UserSchema = mongoose.Schema({
     submission_date : {
         type : Array,
         default : []
+    },
+    last_lc_updated:{
+        type : Date,
+    },
+    last_cf_updated  : {
+        type : Date,
     }
 })
 

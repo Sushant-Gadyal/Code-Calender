@@ -26,10 +26,10 @@ userouter.post("/register", async function(req,res){
             cf_handle : req.body.cf_handle,
         })
 
-        return res.status(200).json({message : "register done", email : req.body.email});
+        return res.status(200).json({success:"true",message : "register done", email : req.body.email});
     }
     catch{
-       return  res.status(400).json({error : error.message});
+       return  res.status(400).json({success:"false",error : error.message});
     }
 })
 
@@ -51,6 +51,26 @@ userouter.post("/login", async function(req,res){
     }
     catch(err){
         return res.status(500).json({success : "false",message :err})
+    }
+})
+
+
+userouter.post("/getuser",async function(req,res){
+    try{
+        const existuser = await UserModel.findOne({email:req.body.email});
+
+        if(!existuser){
+            return res.status(400).json({success :"false" ,message: "user does not exist with this email"});
+        }
+        
+        let resp = await fetch(`https://alfa-leetcode-api.onrender.com/${existuser.lc_handle}/calendar`);
+        resp = await resp.json();
+        console.log(resp);
+
+        return res.status(200).json({submission:resp});
+    }
+    catch(err){
+
     }
 })
 
