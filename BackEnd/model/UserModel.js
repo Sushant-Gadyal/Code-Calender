@@ -26,17 +26,24 @@ const UserSchema = mongoose.Schema({
   last_lc_updated: {
     date: {
       type: String,
+      default : "",
     },
     count: {
       type: String,
+      default : "",
+
     },
   },
   last_cf_updated: {
     date: {
       type: String,
+      default : "",
+
     },
     count: {
       type: String,
+      default : "",
+
     },
   },
 });
