@@ -203,10 +203,6 @@ userouter.post("/getuser",async function(req,res){
                 }
             }
 
-            console.log(new_date_arr);
-            console.log(existuser.last_lc_updated);
-
-            
             let new_arr_len = new_date_arr.length;
             if(new_arr_len>0){
                 existuser.lc_submission_date[0] = new_date_arr[new_arr_len-1];
@@ -221,7 +217,7 @@ userouter.post("/getuser",async function(req,res){
         }
 
 
-
+        console.log("got called")
 
         return res.status(200).json({success:"true", lc_submission_date:existuser.lc_submission_date, cf_submission_date : existuser.cf_submission_date});
     }

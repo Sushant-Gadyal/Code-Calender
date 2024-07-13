@@ -63,7 +63,7 @@ function Login() {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Login into Account
             </h1>
-            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit} autocomplete="off">
+            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit} autoComplete="off">
                
               <div>
                 <label
