@@ -163,13 +163,70 @@ userouter.post("/getuser",async function(req,res){
             
         }
 
+        let lc_resp = await fetch(`https://leetcode-api-faisalshohag.vercel.app/${existuser.lc_handle}`);   // lc_resp has only data and all counts of that respective data but not like cf
+        lc_resp = await lc_resp.json();
+
+        if(existuser.last_lc_updated.date===""){   // first time it is retreving the data
+
+            for(let key in lc_resp.submissionCalendar){
+                let current_cnt = lc_resp.submissionCalendar[key];
+                let dup_key = parseInt(key);
+                let current_date = new Date(dup_key*1000)   
+                .toISOString()
+                .replace("-", "/")
+                .replace("-", "/")
+                .split("T")[0];
+
+                existuser.lc_submission_date.unshift({date : current_date, count : current_cnt});   // here todays data comes first then next yesterdays, day before yesterday and so on.
+            }
+            existuser.last_lc_updated.date = existuser.lc_submission_date[0].date;
+            existuser.last_lc_updated.count = existuser.lc_submission_date[0].count;
+
+            await existuser.save();
+        }
+        else{
+            let new_date_arr = [];    // this always has to get today, yest, day before yest like that
+            for(let key in lc_resp.submissionCalendar){
+                let current_cnt = lc_resp.submissionCalendar[key];
+                let dup_key = parseInt(key);
+                let current_date = new Date(dup_key*1000)   
+                .toISOString()
+                .replace("-", "/")
+                .replace("-", "/")
+                .split("T")[0];
+
+                if(current_date === existuser.last_lc_updated.date){
+                    new_date_arr.unshift({date:current_date, count:current_cnt});
+                }
+                else if(current_date > existuser.last_lc_updated.date){
+                    new_date_arr.unsfit({date:current_date, count:current_cnt});
+                }
+            }
+
+            console.log(new_date_arr);
+            console.log(existuser.last_lc_updated);
+
+            
+            let new_arr_len = new_date_arr.length;
+            if(new_arr_len>0){
+                existuser.lc_submission_date[0] = new_date_arr[new_arr_len-1];
+                for(let i=new_arr_len-2 ; i>=0 ; i--){
+                    existuser.lc_submission_date.unshift(new_date_arr[i]);
+                }
+                existuser.last_lc_updated.date = existuser.lc_submission_date[0].date;
+                existuser.last_lc_updated.count = existuser.lc_submission_date[0].count;
+                await existuser.save();
+            }
+            
+        }
 
 
 
-        return res.status(200).json({success:"true", cf_submission_date:existuser.cf_submission_date});
+
+        return res.status(200).json({success:"true", lc_submission_date:existuser.lc_submission_date, cf_submission_date : existuser.cf_submission_date});
     }
     catch(err){
-        return res.status(400).json({success:"false",messgae:err});
+        return res.status(400).json({success:"false",message:err});
     }
 })
 
