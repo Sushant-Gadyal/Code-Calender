@@ -19,7 +19,11 @@ const UserSchema = mongoose.Schema({
   cf_handle: {
     type: String,
   },
-  submission_date: {
+  lc_submission_date: {
+    type: Array,
+    default: [],
+  },
+  cf_submission_date: {
     type: Array,
     default: [],
   },
@@ -30,20 +34,17 @@ const UserSchema = mongoose.Schema({
     },
     count: {
       type: Number,
-      default : "",
-
+      default : 0,
     },
   },
   last_cf_updated: {
     date: {
       type: String,
-      default : 0,
-
+      default : "",
     },
     count: {
       type: Number,
       default : 0,
-
     },
   },
 });
