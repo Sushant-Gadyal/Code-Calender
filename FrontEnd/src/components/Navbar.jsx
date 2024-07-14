@@ -16,8 +16,8 @@ function Navbar() {
 
   const handlelogout = ()=>{
     localStorage.removeItem("useremail");
+    setisDashboard(false);
     navigate("/")
-
   }
 
   return (
@@ -26,13 +26,29 @@ function Navbar() {
         {/* <div className="max-w-screen-xl flex flex-wrap items-center justify-between p-4 "> */}
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/logo.png" className="h-10 w-35 ml-5" alt="Web Logo" />
-          <span className="self-center mr-10 text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center mr-10 text-2xl font-semibold whitespace-nowrap  dark:text-white">
             Code Calender
           </span>
         </Link>
         <div>
           {isDashboard===true ? 
-            (
+            <>
+              <Link to="/">
+                <button
+                  type="button"
+                  className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                  >
+                  Home
+                </button>
+              </Link>
+              <Link to="/dashboard">
+                <button
+                  type="button"
+                  className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                  >
+                  Profile Page
+                </button>
+              </Link>
               <Link to="/">
                 <button
                   type="button"
@@ -42,9 +58,17 @@ function Navbar() {
                   Logout
                 </button>
               </Link>
-            )
+            </>
            : 
             <>
+              <Link to="/">
+                <button
+                  type="button"
+                  className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                  >
+                  Home
+                </button>
+              </Link>
               <Link to="/register">
                 <button
                   type="button"

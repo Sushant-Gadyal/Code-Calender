@@ -16,7 +16,6 @@ function App() {
           <Route exact path="/register" element={<Register/>}/>
           <Route exact path="/dashboard" element={<Dashboard/>}/>
           <Route exact path="/logout" element={<Logout/>}/>
-          
         </Routes>
       </div>
     </BrowserRouter>
