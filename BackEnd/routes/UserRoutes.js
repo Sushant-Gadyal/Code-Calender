@@ -185,6 +185,7 @@ userouter.post("/getuser",async function(req,res){
             await existuser.save();
         }
         else{
+            // console.log("got");
             let new_date_arr = [];    // this always has to get today, yest, day before yest like that
             for(let key in lc_resp.submissionCalendar){
                 let current_cnt = lc_resp.submissionCalendar[key];
@@ -195,13 +196,25 @@ userouter.post("/getuser",async function(req,res){
                 .replace("-", "/")
                 .split("T")[0];
 
+                // console.log(typeof current_date);
+
                 if(current_date === existuser.last_lc_updated.date){
                     new_date_arr.unshift({date:current_date, count:current_cnt});
+                    // console.log(current_date);
                 }
                 else if(current_date > existuser.last_lc_updated.date){
-                    new_date_arr.unsfit({date:current_date, count:current_cnt});
+                    new_date_arr.unshift({date:current_date, count:current_cnt});
+                    // console.log(current_date);
                 }
+                else{
+                    // console.log(current_date);
+                }
+               
             }
+
+            // for(let i=0 ; i<new_date_arr.length;  i++){
+            //     console.log(new_date_arr[i]);
+            // }
 
             let new_arr_len = new_date_arr.length;
             if(new_arr_len>0){
@@ -217,7 +230,7 @@ userouter.post("/getuser",async function(req,res){
         }
 
 
-        console.log("got called")
+        console.log("got called");
 
         return res.status(200).json({success:"true", lc_submission_date:existuser.lc_submission_date, cf_submission_date : existuser.cf_submission_date});
     }
