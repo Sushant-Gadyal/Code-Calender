@@ -112,12 +112,14 @@ function Dashboard() {
     <div>
       <Navbar />
         <div className="top-0 z-[-2] h-screen w-[100%] bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] flex justify-center items-center">
-        <h4 className="text-white">Select Year</h4>
-        <select value={year} onChange={handleChange}>
-        <option value="2024">2024</option>
-        <option value="2023">2023</option>
-      </select>
-      <p>{`You selected ${year}`}</p>
+          <div className="flex flex-col">
+            <h4 className="text-white">Select Year</h4>
+              <select value={year} onChange={handleChange}>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+             </select>
+            <div className="text-white">{`You selected ${year}`}</div>
+          </div>
         {combined_date.length>0 && 
         <div className="h-full w-full flex justify-center items-center text-white">
           <CalendarHeatmap
