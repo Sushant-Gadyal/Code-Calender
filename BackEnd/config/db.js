@@ -6,7 +6,7 @@ mongoose.set("strictQuery", true, "useNewUrlParser", true);
 const connectDb = async ()=>{
 
     try{
-        await mongoose.connect("mongodb://localhost:27017/CodeCalender");
+        await mongoose.connect("mongodb+srv://sushantgadyal19:plati19@clusterforpersonal.jqowjo0.mongodb.net/CodeCalender?retryWrites=true&w=majority&appName=ClusterforPersonal");
         console.log("DB connected");
     }  
     catch(err){
