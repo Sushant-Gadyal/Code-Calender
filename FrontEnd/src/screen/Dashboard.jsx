@@ -23,7 +23,7 @@ function Dashboard() {
 
   const gettingData = async ()=>{
     try{
-      let resp = await fetch("http://localhost:3005/api/user/getuser",{
+      let resp = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/getuser`,{
           method:"POST",
           headers : {
             "Content-Type": "application/json"
