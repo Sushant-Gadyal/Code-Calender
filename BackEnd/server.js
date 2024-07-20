@@ -3,9 +3,14 @@ const connectDb  = require("./config/db");
 const userouter = require("./routes/UserRoutes");
 const bodyParser = require("body-parser");
 const cors = require('cors');
-const app = express();
+const dotenv = require("dotenv");
 
-const port = 3005;
+// Load environment variables from .env file
+dotenv.config();
+
+
+const app = express();
+const port = process.env.PORT || 3005;
 
 // middlwares
 app.use(cors());

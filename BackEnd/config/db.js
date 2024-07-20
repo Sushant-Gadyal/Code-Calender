@@ -1,4 +1,8 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+
+// Load environment variables from .env file
+dotenv.config();
 
 mongoose.set("strictQuery", true, "useNewUrlParser", true);
 
@@ -6,7 +10,7 @@ mongoose.set("strictQuery", true, "useNewUrlParser", true);
 const connectDb = async ()=>{
 
     try{
-        await mongoose.connect("mongodb+srv://sushantgadyal19:plati19@clusterforpersonal.jqowjo0.mongodb.net/CodeCalender?retryWrites=true&w=majority&appName=ClusterforPersonal");
+        await mongoose.connect(process.env.MONGO_URI);
         console.log("DB connected");
     }  
     catch(err){
