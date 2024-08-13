@@ -9,7 +9,7 @@ so there is no need to back and forth to each profile and see how was your strea
 
 3. Efficient Time Management: Users can manage their coding practice more effectively by viewing their activity over time, helping them allocate their study and practice sessions better.
 
-<strong>Note - Please enter valid Codeforces and LeetCode Handles , otherwise it wont.</strong
+<strong>Note - Please enter valid Codeforces and LeetCode Handles , otherwise it wont work.</strong>
 
   ☺️\
 Author - Sushant Gadyal\
